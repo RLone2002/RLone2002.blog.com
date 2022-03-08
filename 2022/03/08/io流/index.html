@@ -9,7 +9,7 @@
     
     <title>
         
-            Cookie转码解码 |
+            Java i/o流 |
         
         RLoneのBlog
     </title>
@@ -146,7 +146,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Cookie转码解码</span>
+            <span class="title-hover-animation">Java i/o流</span>
         </div>
 
         
@@ -165,8 +165,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-03-08 12:48:16</span>
-        <span class="mobile">2022-03-08 12:48</span>
+        <span class="pc">2022-03-08 23:35:34</span>
+        <span class="mobile">2022-03-08 23:35</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -186,19 +186,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/javaWeb/">javaWeb</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/jsp/">jsp</a>&nbsp;
+                        <a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;
                     </li>
                 
                     <li>
                         | <a href="/tags/java/">java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/i-o%E6%B5%81/">i/o流</a>&nbsp;
                     </li>
                 
             </ul>
@@ -208,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>436 Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>580 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -225,23 +221,83 @@
         
 
         <div class="article-content markdown-body">
-            <h1>先搞清楚为什么Cookie对象不能存储中文</h1>
+            <h1 id="1、使用文件类-：-File类（更新中）"><a href="#1、使用文件类-：-File类（更新中）" class="headerlink" title="1、使用文件类 ： File类（更新中）"></a>1、使用文件类 ： File类（更新中）</h1><h2 id="如何获取文件信息"><a href="#如何获取文件信息" class="headerlink" title="如何获取文件信息"></a>如何获取文件信息</h2><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+<th align="center">返回值类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">getName()</td>
+<td align="center">获取文件名称</td>
+<td align="center">String</td>
+</tr>
+<tr>
+<td align="center">getParent()</td>
+<td align="center">获取文件的父路径字符串</td>
+<td align="center">String</td>
+</tr>
+<tr>
+<td align="center">getPath()</td>
+<td align="center">获取文件的相对路径字符串</td>
+<td align="center">String</td>
+</tr>
+<tr>
+<td align="center">getAbsolutePath()</td>
+<td align="center">获取文件的绝对路径字符串</td>
+<td align="center">String</td>
+</tr>
+<tr>
+<td align="center">exists()</td>
+<td align="center">判断文件或者文件夹是否存在</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">isFile()</td>
+<td align="center">判断是不是文件类型</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">isDirectory()</td>
+<td align="center">判断是不是文件夹类型</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">delete()</td>
+<td align="center">删除文件或文件夹，如果删除成功返回结果为true否则false,删除时文件夹内必须为空</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">mkdir()</td>
+<td align="center">创建文件夹，创建成功返回true</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">setReadOnly()</td>
+<td align="center">设置文件或文件夹的只读属性</td>
+<td align="center">boolean</td>
+</tr>
+<tr>
+<td align="center">length()</td>
+<td align="center">获取文件的长度</td>
+<td align="center">long</td>
+</tr>
+<tr>
+<td align="center">lastModified()</td>
+<td align="center">获取文件的最后修改时间</td>
+<td align="center">long</td>
+</tr>
+<tr>
+<td align="center">list()</td>
+<td align="center">获取文件夹中的文件和子文件夹的名称，并存放到字符串数组中</td>
+<td align="center">String[]</td>
+</tr>
+</tbody></table>
+<h3 id="动手试一试"><a href="#动手试一试" class="headerlink" title="动手试一试"></a>动手试一试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.Rlone.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Rlone</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileInfo</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="comment">//创建File对象并且获取文件</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> <span class="string">&quot;src/com/zch/io/FileInfo.java&quot;</span>;</span><br><span class="line">		<span class="comment">// 根据指定路径创建文件对象</span></span><br><span class="line">		<span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(filePath);</span><br><span class="line">		System.out.println(<span class="string">&quot;文件名称:&quot;</span> + file.getName());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件是否存在：&quot;</span> + file.exists());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件的相对路径：&quot;</span> + file.getPath());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件的绝对路径：&quot;</span> + file.getAbsolutePath());</span><br><span class="line">		System.out.println(<span class="string">&quot;是否为可执行文件：&quot;</span> + file.canExecute());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件可以读取：&quot;</span> + file.canRead());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件可以写入：&quot;</span> + file.canWrite());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件上级路径：&quot;</span> + file.getParent());</span><br><span class="line">		System.out.println(<span class="string">&quot;文件大小：&quot;</span> + file.length() + <span class="string">&quot;B&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;文件最后修改时间：&quot;</span> + <span class="keyword">new</span> <span class="title class_">Date</span>(file.lastModified()));</span><br><span class="line">		System.out.println(<span class="string">&quot;是否文件类型：&quot;</span> + file.isFile());</span><br><span class="line">		System.out.println(<span class="string">&quot;是否为文件夹：&quot;</span> + file.isDirectory());</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5>根据Tomcat版本区分</h5>
-
-<blockquote>
-<p>在Tomcat 8 之前,cookie中不能直接存储中文数据。需要将中文数据转码,否则会直接报错</p>
-<p>在Tomcat 8之后,cookie支持中文数据,<b>但是</b>,特殊字符还是不支持（比如空格)</p>
-</blockquote>
-<h2>如何转码与解码</h2>
-
-<h5>代码片段</h5>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建Cookie对象</span></span><br><span class="line"><span class="comment">//可以看到这是正常创建存值，但是如果存入了中文，在编译时低版本Tomcat会报500错误</span></span><br><span class="line"><span class="comment">//Cookie cookie = new Cookie(&quot;名称&quot;,&quot;值&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//转码存储</span></span><br><span class="line"><span class="comment">//通过URLEncoder对象的encode()方法，可将字符串转码成指定的编码格式，这里统一使用UTF-8</span></span><br><span class="line"><span class="comment">//用法：URLEncoder.encode(&quot;字符串&quot;,&quot;需要转码的编码格式&quot;)</span></span><br><span class="line"><span class="type">Cookie</span> <span class="variable">cookie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cookie</span>(<span class="string">&quot;名称&quot;</span>,URLEncoder.encode(<span class="string">&quot;值&quot;</span>,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//存入到浏览器缓存</span></span><br><span class="line">response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line"><span class="comment">//解码Cookie</span></span><br><span class="line"><span class="comment">//getCookie()返回的是一个Cookie的数组，先拿Cookie对象数组接收</span></span><br><span class="line">Cookie[] ck = request.getCookies();</span><br><span class="line"></span><br><span class="line"><span class="comment">//防止Cookie传入空值</span></span><br><span class="line"><span class="keyword">if</span>(cookie!=<span class="literal">null</span>)&#123;</span><br><span class="line">    <span class="comment">//在网页输出Cookie的name和值 先正常编写</span></span><br><span class="line">    <span class="comment">//这个时候可以输出出来，不会报错，但是如果存入的是中文或者其他特殊符号</span></span><br><span class="line">    <span class="comment">//输出出来的结果会是一串乱码，这时候需要解码</span></span><br><span class="line">    <span class="comment">//Systemctl.out.print(&quot;名称：&quot; + ck.getName());</span></span><br><span class="line">    <span class="comment">//Systemctl.out.print(&quot;值：&quot; + ck.getValue());</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">//解码：</span></span><br><span class="line">    <span class="comment">//通过URLDecoder对象的decode()方法进行解码</span></span><br><span class="line">    <span class="comment">//用法：URLDecoder.decode(&quot;字符串&quot;,&quot;需要解码的编码格式&quot;)</span></span><br><span class="line">    <span class="comment">//上面用的是UTF-8格式存储，所以这里对应的将UTF-8进行解码</span></span><br><span class="line">    Systemctl.out.print(<span class="string">&quot;名称：&quot;</span>+URLDecoder.decode(ck.getName(),<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">    Systemctl.out.print(<span class="string">&quot;值：&quot;</span>+URLDecoder.decode(ck.getValue(),<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h1 style="text-align: center">----------END----------</h1>
+<h3 id="查看运行结果"><a href="#查看运行结果" class="headerlink" title="查看运行结果"></a>查看运行结果</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">文件名称:FileInfo.java</span><br><span class="line">文件是否存在：<span class="literal">true</span></span><br><span class="line">文件的相对路径：src\com\zch\io\FileInfo.java</span><br><span class="line">文件的绝对路径：D:\Java\IO\src\com\zch\io\FileInfo.java</span><br><span class="line">是否为可执行文件：<span class="literal">true</span></span><br><span class="line">文件可以读取：<span class="literal">true</span></span><br><span class="line">文件可以写入：<span class="literal">true</span></span><br><span class="line">文件上级路径：src\com\zch\io</span><br><span class="line">文件大小：1195B</span><br><span class="line">文件最后修改时间：Sat Sep 09 <span class="number">21</span>:<span class="number">30</span>:<span class="number">10</span> CST <span class="number">2017</span></span><br><span class="line">是否文件类型：<span class="literal">true</span></span><br><span class="line">是否为文件夹：<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -250,11 +306,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：Cookie转码解码</li>
+        <li>Post title：Java i/o流</li>
         <li>Post author：RLone</li>
-        <li>Create time：2022-03-08 12:48:16</li>
+        <li>Create time：2022-03-08 23:35:34</li>
         <li>
-            Post link：https://rlone2002.github.iofavicon/2022/03/08/Cookie转码解码/
+            Post link：https://rlone2002.github.iofavicon/2022/03/08/io流/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -269,19 +325,15 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/javaWeb/">#javaWeb</a>&nbsp;
-                    </li>
-                
-                    <li class="tag-item">
                         <a href="/tags/%E5%90%8E%E7%AB%AF/">#后端</a>&nbsp;
                     </li>
                 
                     <li class="tag-item">
-                        <a href="/tags/jsp/">#jsp</a>&nbsp;
+                        <a href="/tags/java/">#java</a>&nbsp;
                     </li>
                 
                     <li class="tag-item">
-                        <a href="/tags/java/">#java</a>&nbsp;
+                        <a href="/tags/i-o%E6%B5%81/">#i/o流</a>&nbsp;
                     </li>
                 
             </ul>
@@ -290,29 +342,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/03/08/io%E6%B5%81/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Java i/o流</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/08/%E9%97%B2%E8%AF%9D/"
+                           href="/2022/03/08/Cookie%E8%BD%AC%E7%A0%81%E8%A7%A3%E7%A0%81/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">闲话</span>
+                                <span class="post-nav-title-item">Cookie转码解码</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -507,7 +544,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">先搞清楚为什么Cookie对象不能存储中文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-text">根据Tomcat版本区分</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text">如何转码与解码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-text">代码片段</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">----------END----------</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E7%B1%BB-%EF%BC%9A-File%E7%B1%BB%EF%BC%88%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89"><span class="nav-text">1、使用文件类 ： File类（更新中）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-text">如何获取文件信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%89%8B%E8%AF%95%E4%B8%80%E8%AF%95"><span class="nav-text">动手试一试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-text">查看运行结果</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
